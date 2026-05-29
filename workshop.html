@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Masterclass | אור ממן</title>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --surface-color: #1a2235;
+            --primary-glow: #3b82f6;
+            --secondary-glow: #8b5cf6;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Heebo', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header & Hero */
+        header {
+            text-align: center;
+            padding: 100px 20px 80px;
+            background: radial-gradient(circle at 50% -20%, rgba(59, 130, 246, 0.15), transparent 60%);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            background: linear-gradient(to left, var(--primary-glow), var(--secondary-glow));
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 30px;
+            display: inline-block;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 900;
+            line-height: 1.1;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 40px;
+            font-weight: 300;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--primary-glow), var(--secondary-glow));
+            color: white;
+            padding: 16px 40px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(139, 92, 246, 0.6);
+        }
+
+        /* Section Global */
+        section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+            color: white;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-glow), var(--secondary-glow));
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+
+        /* Value Props */
+        .benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .benefit-card {
+            background: var(--surface-color);
+            padding: 30px;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+
+        .benefit-card h3 {
+            color: var(--primary-glow);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        /* Agenda / Timeline */
+        .agenda-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .agenda-item {
+            background: rgba(26, 34, 53, 0.6);
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 30px;
+            border-radius: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .agenda-item:hover {
+            background: var(--surface-color);
+            border-color: var(--secondary-glow);
+        }
+
+        .meeting-num {
+            background: linear-gradient(135deg, var(--primary-glow), var(--secondary-glow));
+            color: white;
+            min-width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .agenda-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .agenda-content p {
+            color: var(--text-muted);
+        }
+
+        /* Info & Requirements */
+        .info-section {
+            background: linear-gradient(180deg, var(--bg-color), var(--surface-color));
+            border-top: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .info-box {
+            padding: 30px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 16px;
+        }
+
+        .info-box ul {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .info-box ul li {
+            margin-bottom: 15px;
+            padding-right: 30px;
+            position: relative;
+            color: var(--text-muted);
+        }
+
+        .info-box ul li::before {
+            content: '✓';
+            position: absolute;
+            right: 0;
+            color: var(--primary-glow);
+            font-weight: bold;
+        }
+
+        /* Lecturer Profile */
+        .lecturer-section {
+            text-align: center;
+            max-width: 800px;
+        }
+
+        .lecturer-name {
+            font-size: 2rem;
+            color: var(--secondary-glow);
+            margin-bottom: 10px;
+        }
+
+        .lecturer-title {
+            font-size: 1.2rem;
+            color: white;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 60px 20px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .info-grid { grid-template-columns: 1fr; gap: 30px; }
+            .agenda-item { flex-direction: column; text-align: center; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">O.M AI INNOVATION</div>
+        <h1>להפוך את הבינה המלאכותית<br>לעוזר האישי שלך</h1>
+        <p class="subtitle">סדנת Masterclass מעשית – מאפס לשליטה מוחלטת בטכנולוגיות המתקדמות בעולם תוך 5 מפגשים ממוקדים.</p>
+        <a href="#contact" class="cta-btn">הבטיחו את מקומכם עכשיו</a>
+    </header>
+
+    <section>
+        <h2>למה הסדנא הזו תשנה לכם את העבודה?</h2>
+        <div class="benefits">
+            <div class="benefit-card">
+                <h3>⏱️ חיסכון עצום בזמן</h3>
+                <p>תלמדו לכווץ משימות אפורות ומונוטוניות שלקחו שעות, לדקות ספורות בלבד.</p>
+            </div>
+            <div class="benefit-card">
+                <h3>🛠️ פרקטיקה נטו</h3>
+                <p>בלי תיאוריות באוויר. הסדנא מבוססת על הדגמות חיות ו"לכלוך ידיים" בזמן אמת על המחשב שלכם.</p>
+            </div>
+            <div class="benefit-card">
+                <h3>🚀 יתרון תחרותי</h3>
+                <p>שליטה מלאה בכלים המובילים בשוק ליצירת תוכן, ניתוח נתונים ועיצוב מרהיב ללא רקע מוקדם.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>אג'נדת הסדנא (5 מפגשים, שעתיים למפגש)</h2>
+        <div class="agenda-grid">
+            <div class="agenda-item">
+                <div class="meeting-num">1</div>
+                <div class="agenda-content">
+                    <h3>שפת המכונה – הנדסת פרומפטים</h3>
+                    <p>היכרות עם מודלי השפה (Claude, Gemini, ChatGPT). נלמד איך לכתוב את הפרומפט המושלם, לנהל שרשורי שיחה מורכבים ולייצר תוכן מותאם אישית.</p>
+                </div>
+            </div>
+            <div class="agenda-item">
+                <div class="meeting-num">2</div>
+                <div class="agenda-content">
+                    <h3>המנתח החכם – עבודה עם מסמכים ונתונים</h3>
+                    <p>פיצוח מסמכים ארוכים! איך מעלים דוחות PDF ואקסלים ל-Claude Pro ול-Gemini ומוציאים תובנות וסיכומי מנהלים תוך שניות.</p>
+                </div>
+            </div>
+            <div class="agenda-item">
+                <div class="meeting-num">3</div>
+                <div class="agenda-content">
+                    <h3>המהפכה הוויזואלית – יצירת תמונות</h3>
+                    <p>עבודה מעשית עם מחוללי תמונות מתקדמים (Midjourney, DALL-E 3). נלמד לכתוב פרומפט ויזואלי ולעצב קונספטים מרהיבים מאפס.</p>
+                </div>
+            </div>
+            <div class="agenda-item">
+                <div class="meeting-num">4</div>
+                <div class="agenda-content">
+                    <h3>מעבירים את המסר – מצגות ושילוב ביומיום</h3>
+                    <p>יצירת מצגות עסקיות אינטראקטיביות בעזרת AI. בנוסף, נלמד איך לשלב את הבינה המלאכותית בסביבת העבודה הטבעית של גוגל (Docs, Gmail).</p>
+                </div>
+            </div>
+            <div class="agenda-item">
+                <div class="meeting-num">5</div>
+                <div class="agenda-content">
+                    <h3>עוזר אישי ואוטומציה – העתיד כבר כאן</h3>
+                    <p>בניית "סוכן AI" מותאם אישית (Custom GPTs / Artifacts) שיכיר את העסק שלכם, וטעימה מחיבור הבינה המלאכותית לכלי אוטומציה.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="info-section">
+        <div class="info-grid">
+            <div class="info-box">
+                <h3>💻 מה צריך להביא? (דרישות קדם)</h3>
+                <ul>
+                    <li>מחשב נייד תקין + מטען + עכבר (חובה לתרגול).</li>
+                    <li>חשבון Claude Pro (בתשלום, הכרחי לסדנא).</li>
+                    <li>חשבון Google Gemini פתוח ומוכן.</li>
+                    <li>קובץ עבודה אישי (דוח/אקסל) מהיומיום לטובת תרגול.</li>
+                    <li>ידע בסיסי במחשבים (אין צורך בידע בתכנות!).</li>
+                </ul>
+            </div>
+            <div class="info-box">
+                <h3>📅 פרטים טכניים</h3>
+                <ul>
+                    <li><strong>אורך הסדנא:</strong> 5 מפגשים מרוכזים.</li>
+                    <li><strong>משך כל מפגש:</strong> שעתיים (120 דקות).</li>
+                    <li><strong>פורמט:</strong> הדגמות חיות (Live Demos) + תרגול מעשי.</li>
+                    <li><strong>ליווי:</strong> קבוצת וואטסאפ סגורה לשאלות והתייעצויות במהלך הקורס.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="lecturer-section">
+        <h2>על המרצה</h2>
+        <h3 class="lecturer-name">אור ממן</h3>
+        <h4 class="lecturer-title">מרצה ויועץ חדשנות ובינה מלאכותית</h4>
+        <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">
+            מלווה ארגונים, יזמים ואנשים פרטיים באימוץ טכנולוגיות מתקדמות לשיפור תהליכי עבודה. בעל ניסיון רב בהנגשת חומר טכנולוגי מורכב בצורה פשוטה, בגובה העיניים ומוכוונת תוצאות פרקטיות שמייצרות אימפקט מיידי בשטח.
+        </p>
+    </section>
+
+    <footer id="contact">
+        <h2>מוכנים לעשות את הצעד הבא?</h2>
+        <p style="margin-bottom: 30px; color: var(--text-muted);">מספר המקומות מוגבל על מנת להבטיח יחס אישי וליווי צמוד לכל משתתף בזמן התרגולים.</p>
+        <a href="mailto:your-email@example.com" class="cta-btn">צרו קשר להרשמה (Email)</a>
+        <p style="margin-top: 40px; color: rgba(255,255,255,0.2); font-size: 0.9rem;">© 2026 אור ממן. כל הזכויות שמורות.</p>
+    </footer>
+
+</body>
+</html>
